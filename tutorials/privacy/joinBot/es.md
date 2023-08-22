@@ -22,7 +22,7 @@ La idea no es ocultar directamente la información, sino confundirla entre otras
 Las entradas son las entradas de una transacción de Bitcoin, y las salidas representan las salidas. La transacción consume sus entradas para crear nuevas salidas al cambiar las condiciones de gasto en una moneda. Este mecanismo permite mover bitcoins entre usuarios.
 Hablo de esto en detalle en este artículo: Mecanismo de una transacción de Bitcoin: UTXO, entradas y salidas.
 
-Una forma de confundir las pistas en una transacción de Bitcoin es realizar una transacción colaborativa. Como su nombre indica, implica un acuerdo entre varios usuarios que cada uno depositará una cantidad de bitcoins como entrada en una misma transacción y recibirá una cantidad como salida.
+Una forma de confundir las pistas en una transacción de Bitcoin es realizar una transacción colaborativa. Como su nombre indica, implica un acuerdo entre varios usuarios, es decir, cada uno depositará una cantidad de bitcoins como entrada en una misma transacción y recibirá una cantidad como salida.
 
 Como se mencionó anteriormente, la estructura de transacción colaborativa más conocida es Coinjoin. Por ejemplo, en el protocolo Coinjoin Whirlpool, las transacciones involucran a 5 participantes como entrada y salida, cada uno con la misma cantidad de bitcoins.
 
@@ -33,17 +33,17 @@ El usuario tiene la capacidad de negar la posesión de cierto UTXO en la salida.
 
 Para obtener más información sobre Coinjoin, te explico TODO en este largo artículo: Comprender y utilizar CoinJoin en Bitcoin.
 
-Aunque es muy eficaz para romper el rastreo de un UTXO, Coinjoin no es adecuado para gastos directos. De hecho, su estructura implica tener que utilizar inputs de un monto predefinido y outputs del mismo valor (modulo las tarifas de minería). Sin embargo, la transacción de gasto en Bitcoin es un momento crítico para la privacidad, ya que a menudo vincula físicamente al usuario con su actividad en la cadena. Por lo tanto, parece esencial utilizar herramientas de privacidad en el gasto. Existen otras estructuras de transacciones colaborativas diseñadas específicamente para transacciones de pago efectivo.
+Aunque es muy eficaz para romper el rastreo de un UTXO, Coinjoin no es adecuado para gastos directos. De hecho, su estructura implica tener que utilizar inputs de un monto predefinido y outputs del mismo valor (modulo las tarifas de minería). Sin embargo, la transacción de gasto en Bitcoin es un momento crítico para la privacidad, ya que a menudo vincula físicamente al usuario con su actividad en la cadena. Por lo tanto, parece esencial usar herramientas de privacidad en el gasto. Existen otras estructuras de transacciones colaborativas diseñadas específicamente para transacciones de pago efectivo.
 
 ## La transacción StonewallX2
 
-Entre la miríada de herramientas de gasto ofrecidas en Samourai Wallet, existe la transacción colaborativa StonewallX2. Es un mini Coinjoin entre dos usuarios diseñado para el pago. Desde el exterior, esta transacción puede dar lugar a varias interpretaciones posibles. Por lo tanto, se encuentra la plausible deniability y, en consecuencia, la privacidad para el usuario.
+Entre la infinidad de herramientas de gasto ofrecidas en Samourai Wallet, existe la transacción colaborativa StonewallX2. Es un mini Coinjoin entre dos usuarios diseñado para el pago. Desde el exterior, esta transacción puede dar lugar a varias interpretaciones posibles. Por lo tanto, se encuentra la plausible deniability y, en consecuencia, la privacidad para el usuario.
 
 Este montaje de transacción colaborativa StonewallX2 está disponible en Samourai Wallet y en Sparrow Wallet. Esta herramienta es interoperable entre los dos programas.
 
 Su mecanismo es bastante simple de entender. Aquí está su funcionamiento práctico:
 
-> - Un usuario desea realizar un pago en bitcoins (por ejemplo, en un comercio).
+> - Un usuario desea realizar un pago en bitcoin (por ejemplo, en un comercio).
 > - Obtiene la dirección de recepción del destinatario real del pago (el comerciante).
 > - Construye una transacción específica con varios inputs: al menos uno que le pertenece y otro que pertenece a un colaborador externo.
 > - La transacción tendrá 4 outputs, incluyendo 2 del mismo monto: uno hacia la dirección del comerciante para pagarle, uno de cambio que vuelve al usuario, un output del mismo valor que el pago que va hacia el colaborador y otro output que también vuelve al colaborador.
