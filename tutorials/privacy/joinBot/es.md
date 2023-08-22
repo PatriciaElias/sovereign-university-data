@@ -57,10 +57,10 @@ Se pueden observar 4 outputs, incluyendo 2 del mismo monto para confundir las pi
 > - 50,125 sats que van al destinatario real de mi pago.
 > - 52,306 sats que representan mi cambio y que, por lo tanto, vuelven a una dirección de mi billetera.
 > - 50,125 sats que vuelven a mi colaborador.
-> - 53 973 sats que vuelven a mi colaborador.
+> - 53,973 sats que vuelven a mi colaborador.
 >   Al final de la operación, el colaborador recupera todo su saldo inicial (excepto los gastos de minería), y el usuario habrá pagado al comerciante. Esto permite agregar una gran cantidad de entropía a la transacción y romper los vínculos inequívocos entre el remitente y el destinatario del pago.
 
-La fortaleza de la transacción de tipo StonewallX2 es que contrarresta completamente una de las reglas empíricas utilizadas por los analistas de cadena: la propiedad común de las entradas en una transacción de múltiples entradas. En otras palabras, en la mayoría de los casos, si observamos una transacción de Bitcoin que tiene varias entradas, podemos asumir que todas estas entradas pertenecen a la misma persona. Satoshi Nakamoto ya había identificado este problema para la privacidad del usuario en su Libro Blanco:
+La fortaleza de la transacción de tipo StonewallX2 es que contrarresta completamente una de las reglas empíricas utilizadas por los analistas de cadena: la propiedad común de las entradas en una transacción de múltiples entradas. En otras palabras, en la mayoría de los casos, si observamos una transacción de Bitcoin que tiene varias entradas, podemos asumir que todas estas entradas pertenecen a la misma persona. Satoshi Nakamoto ya había identificado este problema de la privacidad del usuario en su Libro Blanco:
 
 > "Como cortafuegos adicional, se podrían utilizar nuevas parejas de claves para cada transacción con el fin de mantenerlas sin conexión a un propietario común. Sin embargo, la conexión es inevitable con las transacciones de múltiples entradas, que necesariamente revelan que sus entradas eran propiedad de un mismo propietario".
 
@@ -71,13 +71,13 @@ La fortaleza de la transacción StonewallX2 radica en el hecho de que un observa
 Desde el exterior, una transacción StonewallX2 no se puede diferenciar de una transacción Stonewall. La diferencia efectiva entre ellas radica simplemente en el hecho de que Stonewall no es colaborativo. Solo utiliza las UTXO de un mismo usuario. Pero, en sus estructuras en el registro de cuentas, Stonewall y StonewallX2 son perfectamente idénticos. Esto permite agregar aún más interpretaciones posibles a esta estructura de transacción, ya que un observador externo no podrá saber si las entradas provienen de la misma persona o de dos colaboradores.
 
 Luego, la ventaja de StonewallX2 en comparación con un PayJoin de tipo Stowaway es que se puede utilizar en todas las situaciones. El receptor efectivo del pago no deposita ninguna entrada en la transacción. Por lo tanto, se puede utilizar un StonewallX2 para pagar en cualquier comercio que acepte Bitcoin, incluso si este último no utiliza Samourai o Sparrow.
-En revanche, l’inconvénient principal de cette structure de transaction est qu’elle nécessite un collaborateur qui veuille bien utiliser ses bitcoins pour participer à votre paiement. Si vous avez des amis bitcoiners prêts à vous aider en toute circonstance, cela n’est pas un problème. En revanche, si vous ne connaissez pas d’autres utilisateurs de Samourai Wallet, ou bien si personne n’est disponible pour collaborer, alors vous êtes bloqué.
+Por otro lado, la principal desventaja de esta estructura de transacción es que requiere un colaborador que esté dispuesto a utilizar sus bitcoins para participar en su pago. Si tiene amigos bitcoiners dispuestos a ayudarle en cualquier circunstancia, esto no es un problema. Sin embargo, si no conoce a ningún otro usuario de Samourai Wallet, o si no hay nadie disponible para colaborar, entonces esta atascado.
 
-Il existe toutefois un groupe Telegram où vous pouvez trouver d’autres utilisateurs de Samourai qui voudront bien collaborer avec vous. Vous pouvez le retrouver en cliquant ici.
+Sin embargo, existe un grupo de Telegram en el que puedes encontrar a otros usuarios de Samurai que querrán colaborar contigo. Puedes encontrarlo haciendo clic aquí.
 
-Pour résoudre cette problématique, les équipes de Samourai ont récemment ajouté une nouvelle fonctionnalité à leur application : JoinBot.
+Para solucionar este problema, los equipos de Samurai han añadido recientemente una nueva función a su aplicación: JoinBot.
 
-# C’est quoi JoinBot ?
+# ¿Qué es JoinBot?
 
 Le principe de JoinBot est simple. Si vous ne trouvez personne avec qui collaborer pour une transaction StonewallX2, vous pouvez collaborer avec lui. Concrètement, vous allez en fait réaliser une transaction collaborative directement avec Samourai Wallet.
 
