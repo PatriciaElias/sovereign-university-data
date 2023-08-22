@@ -22,7 +22,7 @@ La idea no es ocultar directamente la información, sino confundirla entre otras
 Las entradas son las entradas de una transacción de Bitcoin, y las salidas representan las salidas. La transacción consume sus entradas para crear nuevas salidas al cambiar las condiciones de gasto en una moneda. Este mecanismo permite mover bitcoins entre usuarios.
 Hablo de esto en detalle en este artículo: Mecanismo de una transacción de Bitcoin: UTXO, entradas y salidas.
 
-Una forma de confundir las pistas en una transacción de Bitcoin es realizar una transacción colaborativa. Como su nombre indica, implica un acuerdo entre varios usuarios que cada uno depositará una cantidad de bitcoins como entrada en una misma transacción y recibirá una cantidad como salida.
+Una forma de confundir las pistas en una transacción de Bitcoin es realizar una transacción colaborativa. Como su nombre indica, implica un acuerdo entre varios usuarios, es decir, cada uno depositará una cantidad de bitcoins como entrada en una misma transacción y recibirá una cantidad como salida.
 
 Como se mencionó anteriormente, la estructura de transacción colaborativa más conocida es Coinjoin. Por ejemplo, en el protocolo Coinjoin Whirlpool, las transacciones involucran a 5 participantes como entrada y salida, cada uno con la misma cantidad de bitcoins.
 
@@ -33,17 +33,17 @@ El usuario tiene la capacidad de negar la posesión de cierto UTXO en la salida.
 
 Para obtener más información sobre Coinjoin, te explico TODO en este largo artículo: Comprender y utilizar CoinJoin en Bitcoin.
 
-Aunque es muy eficaz para romper el rastreo de un UTXO, Coinjoin no es adecuado para gastos directos. De hecho, su estructura implica tener que utilizar inputs de un monto predefinido y outputs del mismo valor (modulo las tarifas de minería). Sin embargo, la transacción de gasto en Bitcoin es un momento crítico para la privacidad, ya que a menudo vincula físicamente al usuario con su actividad en la cadena. Por lo tanto, parece esencial utilizar herramientas de privacidad en el gasto. Existen otras estructuras de transacciones colaborativas diseñadas específicamente para transacciones de pago efectivo.
+Aunque es muy eficaz para romper el rastreo de un UTXO, Coinjoin no es adecuado para gastos directos. De hecho, su estructura implica tener que utilizar inputs de un monto predefinido y outputs del mismo valor (modulo las tarifas de minería). Sin embargo, la transacción de gasto en Bitcoin es un momento crítico para la privacidad, ya que a menudo vincula físicamente al usuario con su actividad en la cadena. Por lo tanto, parece esencial usar herramientas de privacidad en el gasto. Existen otras estructuras de transacciones colaborativas diseñadas específicamente para transacciones de pago efectivo.
 
 ## La transacción StonewallX2
 
-Entre la miríada de herramientas de gasto ofrecidas en Samourai Wallet, existe la transacción colaborativa StonewallX2. Es un mini Coinjoin entre dos usuarios diseñado para el pago. Desde el exterior, esta transacción puede dar lugar a varias interpretaciones posibles. Por lo tanto, se encuentra la plausible deniability y, en consecuencia, la privacidad para el usuario.
+Entre la infinidad de herramientas de gasto ofrecidas en Samourai Wallet, existe la transacción colaborativa StonewallX2. Es un mini Coinjoin entre dos usuarios diseñado para el pago. Desde el exterior, esta transacción puede dar lugar a varias interpretaciones posibles. Por lo tanto, se encuentra la plausible deniability y, en consecuencia, la privacidad para el usuario.
 
 Este montaje de transacción colaborativa StonewallX2 está disponible en Samourai Wallet y en Sparrow Wallet. Esta herramienta es interoperable entre los dos programas.
 
 Su mecanismo es bastante simple de entender. Aquí está su funcionamiento práctico:
 
-> - Un usuario desea realizar un pago en bitcoins (por ejemplo, en un comercio).
+> - Un usuario desea realizar un pago en bitcoin (por ejemplo, en un comercio)
 > - Obtiene la dirección de recepción del destinatario real del pago (el comerciante).
 > - Construye una transacción específica con varios inputs: al menos uno que le pertenece y otro que pertenece a un colaborador externo.
 > - La transacción tendrá 4 outputs, incluyendo 2 del mismo monto: uno hacia la dirección del comerciante para pagarle, uno de cambio que vuelve al usuario, un output del mismo valor que el pago que va hacia el colaborador y otro output que también vuelve al colaborador.
@@ -57,40 +57,40 @@ Se pueden observar 4 outputs, incluyendo 2 del mismo monto para confundir las pi
 > - 50,125 sats que van al destinatario real de mi pago.
 > - 52,306 sats que representan mi cambio y que, por lo tanto, vuelven a una dirección de mi billetera.
 > - 50,125 sats que vuelven a mi colaborador.
-> - 53 973 sats que vuelven a mi colaborador.
+> - 53,973 sats que vuelven a mi colaborador.
 >   Al final de la operación, el colaborador recupera todo su saldo inicial (excepto los gastos de minería), y el usuario habrá pagado al comerciante. Esto permite agregar una gran cantidad de entropía a la transacción y romper los vínculos inequívocos entre el remitente y el destinatario del pago.
 
-La fortaleza de la transacción de tipo StonewallX2 es que contrarresta completamente una de las reglas empíricas utilizadas por los analistas de cadena: la propiedad común de las entradas en una transacción de múltiples entradas. En otras palabras, en la mayoría de los casos, si observamos una transacción de Bitcoin que tiene varias entradas, podemos asumir que todas estas entradas pertenecen a la misma persona. Satoshi Nakamoto ya había identificado este problema para la privacidad del usuario en su Libro Blanco:
+La fortaleza de la transacción de tipo StonewallX2 es que contrarresta completamente una de las reglas empíricas utilizadas por los analistas de cadena: la propiedad común de las entradas en una transacción de múltiples entradas. En otras palabras, en la mayoría de los casos, si observamos una transacción de Bitcoin que tiene varias entradas, podemos asumir que todas estas entradas pertenecen a la misma persona. Satoshi Nakamoto ya había identificado este problema de la privacidad del usuario en su Libro Blanco:
 
 > "Como cortafuegos adicional, se podrían utilizar nuevas parejas de claves para cada transacción con el fin de mantenerlas sin conexión a un propietario común. Sin embargo, la conexión es inevitable con las transacciones de múltiples entradas, que necesariamente revelan que sus entradas eran propiedad de un mismo propietario".
 
-Esta es una de las muchas reglas empíricas utilizadas en el análisis en cadena para construir grupos de direcciones. Para obtener más información sobre estas heurísticas, le recomiendo que lea esta serie de 4 artículos de Samourai que introduce muy bien el tema.
+Esta es una de las muchas reglas empíricas utilizadas en el análisis en cadena para construir grupos de direcciones. Para obtener más información sobre estas heurísticas, le recomiendo que lea una serie de artículos de Samourai que introduce muy bien el tema.
 
 La fortaleza de la transacción StonewallX2 radica en el hecho de que un observador externo pensará que las diferentes entradas de la transacción pertenecen a un propietario común. En realidad, son dos usuarios diferentes los que colaboran. El análisis del pago se dirige hacia una falsa pista y se preserva la privacidad de los usuarios.
 
 Desde el exterior, una transacción StonewallX2 no se puede diferenciar de una transacción Stonewall. La diferencia efectiva entre ellas radica simplemente en el hecho de que Stonewall no es colaborativo. Solo utiliza las UTXO de un mismo usuario. Pero, en sus estructuras en el registro de cuentas, Stonewall y StonewallX2 son perfectamente idénticos. Esto permite agregar aún más interpretaciones posibles a esta estructura de transacción, ya que un observador externo no podrá saber si las entradas provienen de la misma persona o de dos colaboradores.
 
 Luego, la ventaja de StonewallX2 en comparación con un PayJoin de tipo Stowaway es que se puede utilizar en todas las situaciones. El receptor efectivo del pago no deposita ninguna entrada en la transacción. Por lo tanto, se puede utilizar un StonewallX2 para pagar en cualquier comercio que acepte Bitcoin, incluso si este último no utiliza Samourai o Sparrow.
-En revanche, l’inconvénient principal de cette structure de transaction est qu’elle nécessite un collaborateur qui veuille bien utiliser ses bitcoins pour participer à votre paiement. Si vous avez des amis bitcoiners prêts à vous aider en toute circonstance, cela n’est pas un problème. En revanche, si vous ne connaissez pas d’autres utilisateurs de Samourai Wallet, ou bien si personne n’est disponible pour collaborer, alors vous êtes bloqué.
+Por otro lado, la principal desventaja de esta estructura de transacción es que requiere un colaborador que esté dispuesto a utilizar sus bitcoins para participar en su pago. Si tiene amigos bitcoiners dispuestos a ayudarle en cualquier circunstancia, esto no es un problema. Sin embargo, si no conoce a ningún otro usuario de Samourai Wallet, o si no hay nadie disponible para colaborar, entonces esta atascado.
 
-Il existe toutefois un groupe Telegram où vous pouvez trouver d’autres utilisateurs de Samourai qui voudront bien collaborer avec vous. Vous pouvez le retrouver en cliquant ici.
+Sin embargo, es posible encontrar grupos que se utilizan específicamente para encontrar una persona con la cual colaborar.
 
-Pour résoudre cette problématique, les équipes de Samourai ont récemment ajouté une nouvelle fonctionnalité à leur application : JoinBot.
+Para solucionar este problema, los equipos de Samurai han añadido recientemente una nueva función a su aplicación: JoinBot.
 
-# C’est quoi JoinBot ?
+# ¿Qué es JoinBot?
 
-Le principe de JoinBot est simple. Si vous ne trouvez personne avec qui collaborer pour une transaction StonewallX2, vous pouvez collaborer avec lui. Concrètement, vous allez en fait réaliser une transaction collaborative directement avec Samourai Wallet.
+El principio de JoinBot es sencillo. Si no puede encontrar a nadie con quien colaborar en una transacción StonewallX2, puede colaborar con ellos. En términos prácticos, en realidad estará realizando una transacción colaborativa directamente con Samourai Wallet.
 
-Ce service est très commode, notamment pour les utilisateurs novices, puisqu’il est disponible 24h/24 et 7j/7. Si vous devez effectuer un paiement urgent et que vous souhaitez faire un StonewallX2, vous n’aurez plus besoin de contacter un ami, ou bien de chercher un collaborateur en ligne. JoinBot se chargera de vous assister.
+Este servicio es muy cómodo, especialmente para los usuarios principiantes, ya que está disponible 24 horas al día, 7 días a la semana. Si necesita hacer un pago urgente y desea hacer un StonewallX2, ya no tendrá que ponerse en contacto con un amigo, o buscar un colaborador en línea. JoinBot le ayudará.
 
-Un autre avantage de JoinBot est que les UTXO qu’il fournit en input sont issus exclusivement de postmix Whirlpool, ce qui vient améliorer la confidentialité de votre paiement. De plus, puisque JoinBot est tout le temps en ligne, vous devriez collaborer avec des UTXO qui disposent de larges Anonset prospectifs.
+Otra ventaja de JoinBot es que los UTXO que proporciona como entrada proceden exclusivamente de Whirlpool postmix, lo que mejora la confidencialidad de su pago. Además, dado que JoinBot está en línea todo el tiempo, debe trabajar con UTXOs que tengan grandes Anonsets prospectivos.
 
-Évidemment, JoinBot dispose de certains compromis qu’il convient de signaler :
+Por supuesto, JoinBot tiene que hacer algunas concesiones:
 
-> Comme pour un StonewallX2 classique, votre collaborateur est forcément au courant des UTXO utilisés et de leur destination. Dans le cas de JoinBot, Samourai connait les détails de cette transaction. Ce n’est pas forcément une mauvaise chose, mais il faut le garder à l’esprit.
-> Pour éviter les spams, Samourai prélève 3,5 % de frais de service sur le montant de la transaction effective, avec une limite maximale de 0,01 BTC. Par exemple, si j’envoie un paiement réel de 100 kilosats avec JoinBot, le montant des frais de service sera de 3 500 sats.
-> Pour utiliser JoinBot, vous devez obligatoirement disposer d’au moins deux UTXO non liés et disponibles sur votre portefeuille.
-> Sur un StonewallX2 classique, les frais de minage sont partagés équitablement entre les deux collaborateurs. Avec JoinBot, vous devrez évidemment payer l’intégralité des frais de minage.
+> Al igual que en un StonewallX2 tradicional, su colaborador conoce necesariamente los UTXO utilizados y su destino. En el caso de JoinBot, Samourai conoce los detalles de esta transacción. Esto no es necesariamente malo, pero es algo a tener en cuenta.
+> Para evitar el spam, Samourai cobra una comisión de servicio del 3,5% sobre el importe real de la transacción, con un límite máximo de 0,01 BTC. Por ejemplo, si envío un pago real de 100 kilosats utilizando JoinBot, la comisión de servicio será de 3.500 sats.
+> Para utilizar JoinBot, debe tener al menos dos UTXOs no vinculados disponibles en su cartera.
+> En un StonewallX2 clásico, los costes de minado se reparten a partes iguales entre los dos colaboradores. Con JoinBot, obviamente tendrás que pagar la totalidad de los costes de minería.
 > Para que una transacción JoinBot sea exactamente igual a una transacción StonewallX2 clásica o Stonewall, el pago de las tarifas de servicio se realiza en una transacción totalmente separada. El reembolso de la mitad de las tarifas de minería inicialmente pagadas por Samourai se realizará en esta segunda transacción. Para optimizar su privacidad hasta el final, el pago de las tarifas se realiza utilizando una transacción con la estructura Stowaway (PayJoin).
 
 ## ¿Cómo utilizar JoinBot?
@@ -135,10 +135,10 @@ Si puede realizar un StonewallX2 clásico con un amigo, le recomiendo que prefie
 > - https://docs.samourai.io/wallet/privacy-enhanced-transactions
 > - https://www.pandul.fr/post/comprendre-et-utiliser-le-coinjoin-sur-bitcoin
 
-**Tutoriel et explication offerte par Loïc Morel**
+**Tutorial y explicación ofrecida por Loïc Morel**
 
 > Loïc Morel
-> Fondateur de Pandul
-> Je suis un jeune autodidacte, passionné de Bitcoin et de cryptographie. J’essaie, à mon humble échelle, de transmettre mon savoir et mon savoir-faire sur Bitcoin et son environnement, en me focalisant sur la confidentialité, la souveraineté de l’utilisateur et les stratégies de sécurisation.
-> Retrouvez tous ses travaux : pandul.fr/ressources
-> Le suivre sur Twitter : @Loic_Pandul
+> Fundador de Pandul
+> Soy un joven autodidacta apasionado por Bitcoin y la criptografía. Desde mi humilde posición, intento transmitir mis conocimientos y experiencia sobre Bitcoin y su entorno, centrándome en la confidencialidad, la soberanía del usuario y las estrategias de seguridad.
+> Más información sobre su trabajo: pandul.fr/ressources
+> Sígale en Twitter: @Loic_Pandul
